@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import { TextField } from './TextField';
+import { TextArea } from './TextArea';
 import * as Yup from 'yup';
 
 export const AddEvent = () => {
@@ -12,7 +13,7 @@ export const AddEvent = () => {
       .max(30, 'Must be 30 characters or less')
       .required('Required'),
     participants: Yup.string()
-        .min(2, 'Must be at least 2 charaters')
+        .min(2, 'Must be at least 2 characters')
         .required('Required'),
     date: Yup.string()
       .required('required'),
@@ -25,19 +26,32 @@ export const AddEvent = () => {
         .required('Required'),
   })
   return (
-    <Formik>
-
+    <Formik
+      initialValues={{
+        title: '',
+        location:'',
+        participants: '',
+        date: '',
+        timeStart:'',
+        timeEnd:'',
+        note:''
+      }}
+      validationSchema={validate}
+      onSubmit={values=> {
+        console.log(values)
+      }}
+      >
       {formik => (
         <div>
           <h1 className="my-4 font-weight-bold .display-4">Add Event</h1>
           <Form>
             <TextField label="Title" name="title" type="text" />
             <TextField label="Location" name="location" type="text" />
-            <TextField label="Participants" name="name" type="text" />
+            <TextField label="Participants" name="participants" type="text" />
             <TextField label="Date" name="date" type="date" />
             <TextField label="Start Time" name="timeStart" type="time" />
             <TextField label="End Time" name="timeEnd" type="time" />
-            <TextField label="Note" name="note" type="text" />
+            <TextArea label="Note" name="note" type="text" />
             <button className="btn btn-success mt-3" type="submit">Submit</button>
           </Form>
 
