@@ -1,38 +1,27 @@
-.App {
-  text-align: center;
+import './App.css';
+import { AddEvent } from './components/AddEvent';
+import Cards from './components/Card';
+
+function App() {
+  return (
+    <div>
+      <div className='view'>
+        <div className="container mt-5" >
+          <div className="desc">
+            <h1>Input your new event here</h1>
+          </div>
+          <div className="col-md-5">
+            <div className="test">
+              <AddEvent />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='card'>
+        <h1>Event List</h1>
+      </div>
+    </div>
+  );
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+export default App;
